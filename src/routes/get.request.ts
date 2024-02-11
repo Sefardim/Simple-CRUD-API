@@ -1,6 +1,6 @@
 import { IncomingMessage, ServerResponse } from 'http';
 
-import { localDataBase } from '../data-base/local.data.base';
+import localDataBase from '../data-base/local.data.base';
 import { validateUserId } from '../utils/validate.user.id';
 import { getUserId } from '../utils/get.user.id';
 

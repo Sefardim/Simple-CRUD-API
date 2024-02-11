@@ -6,7 +6,7 @@ import {
     IUserInterfaceWithId,
 } from '../interfaces/user.interfaces';
 import { validateBody } from '../utils/validate.body';
-import { localDataBase } from '../data-base/local.data.base';
+import localDataBase from '../data-base/local.data.base';
 
 export const postUser = (
     res: ServerResponse<IncomingMessage> & { req: IncomingMessage },

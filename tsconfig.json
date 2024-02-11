@@ -5,7 +5,6 @@
         "allowJs": false,
         "resolveJsonModule": true,
         "outDir": "./dist",
-        "rootDir": "./src",
         "downlevelIteration": false,
         "strict": true,
         "noUnusedLocals": true,

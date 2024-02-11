@@ -9,7 +9,7 @@ const validateHobbies = (obj: any) => {
             return true;
         }
 
-        const result = obj.map(item => {
+        const result = obj.map((item) => {
             return typeof item === 'string';
         });
 
@@ -17,7 +17,7 @@ const validateHobbies = (obj: any) => {
     }
 
     return false;
-}
+};
 
 export const validateBody = <T>(obj: any): obj is T => {
     const objKeys = Object.keys(obj).sort().toString();
@@ -34,7 +34,9 @@ export const validateBody = <T>(obj: any): obj is T => {
                 resultOfTypeValidation.push(typeof obj[prop] === 'number');
             }
             if (prop === 'hobbies') {
-                resultOfTypeValidation.push(typeof obj[prop] === 'object' && validateHobbies(obj[prop]));
+                resultOfTypeValidation.push(
+                    typeof obj[prop] === 'object' && validateHobbies(obj[prop]),
+                );
             }
         }
 
@@ -52,7 +54,9 @@ export const validateBody = <T>(obj: any): obj is T => {
                 resultOfTypeValidation.push(typeof obj[prop] === 'number');
             }
             if (prop === 'hobbies') {
-                resultOfTypeValidation.push(typeof obj[prop] === 'object' && validateHobbies(obj[prop]));
+                resultOfTypeValidation.push(
+                    typeof obj[prop] === 'object' && validateHobbies(obj[prop]),
+                );
             }
             if (prop === 'id') {
                 resultOfTypeValidation.push(validate(obj[prop]));

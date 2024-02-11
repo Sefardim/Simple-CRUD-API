@@ -7,6 +7,7 @@
         "start:dev": "nodemon src/index.ts",
         "start:prod": "webpack && node ./dist/bundle.js",
         "start:multi": "cross-env MULTI=multi PORT=4000 nodemon src/index.ts",
+        "test": "cross-env TEST=test jest",
         "lint": "eslint {src,test}/**/*.ts --fix"
     },
     "keywords": [],
@@ -17,7 +18,9 @@
         "uuid": "^9.0.1"
     },
     "devDependencies": {
+        "@types/jest": "^29.5.12",
         "@types/node": "^20.11.16",
+        "@types/supertest": "^6.0.2",
         "@types/uuid": "^9.0.8",
         "@types/webpack": "^5.28.5",
         "@types/webpack-dev-server": "^4.7.2",
@@ -32,6 +35,8 @@
         "jest": "^29.7.0",
         "nodemon": "^3.0.3",
         "prettier": "^3.2.5",
+        "supertest": "^6.3.4",
+        "ts-jest": "^29.1.2",
         "ts-loader": "^9.5.1",
         "ts-node": "^10.9.2",
         "typescript": "^5.3.3",

@@ -2,7 +2,7 @@ import { IncomingMessage, ServerResponse } from 'http';
 
 import { validateUserId } from '../utils/validate.user.id';
 import { getUserId } from '../utils/get.user.id';
-import { localDataBase } from '../data-base/local.data.base';
+import localDataBase from '../data-base/local.data.base';
 import { IUserInterfaceWithId } from '../interfaces/user.interfaces';
 import { validateBody } from '../utils/validate.body';
 
