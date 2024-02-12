@@ -13,8 +13,6 @@ $ npm i
 $ npm run start:dev
 # production mode
 $ npm run start:prod
-# development multi mode
-$ npm run start:dev-multi 
 # production multi mode
 $ npm run start:multi 
 ```
