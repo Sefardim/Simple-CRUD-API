@@ -4,6 +4,7 @@ import { cpus } from 'node:os';
 
 import 'dotenv/config';
 import { requests } from './routes/requests';
+import { catchError } from './utils/catch.error';
 
 const numCPUs = cpus().length;
 const port = Number(process.env.PORT);
@@ -11,12 +12,6 @@ const multiServerOn = process.env.MULTI;
 
 if (multiServerOn) {
     if (cluster.isPrimary) {
-        let mainCluster = cluster.fork({ workerPort: port });
-
-        mainCluster.on('exit', () => {
-            mainCluster = cluster.fork({ workerPort: port });
-        });
-
         console.log(`Primary ${process.pid} is running`);
         const pidToPort: any = {};
 
@@ -25,14 +20,13 @@ if (multiServerOn) {
             const worker: any = cluster.fork({ workerPort });
             pidToPort[worker.process.pid] = workerPort;
         }
-        //
-        // cluster.on('exit', (worker, code, signal) => {
-        //     console.log(code, signal);
-        //     console.log(`worker ${worker.process.pid} died`);
-        //     cluster.fork();
-        // });
+
+        cluster.on('exit', (worker) => {
+            console.log(`worker ${worker.process.pid} died`);
+        });
     } else {
         createServer((req, res) => {
+            catchError(res);
             requests(req, res);
         }).listen(port);
 
@@ -40,6 +34,7 @@ if (multiServerOn) {
     }
 } else {
     createServer((req, res) => {
+        catchError(res);
         requests(req, res);
     }).listen(port);
 

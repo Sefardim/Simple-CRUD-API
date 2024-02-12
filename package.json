@@ -8,7 +8,7 @@
         "start:prod": "webpack && node ./dist/bundle.js",
         "start:multi": "cross-env MULTI=multi PORT=4000 nodemon src/index.ts",
         "test": "cross-env TEST=test jest",
-        "lint": "eslint {src,test}/**/*.ts --fix"
+        "lint": "eslint src/**/*.ts --fix"
     },
     "keywords": [],
     "author": "Sefardim",
